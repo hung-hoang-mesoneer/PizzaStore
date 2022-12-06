@@ -10,14 +10,34 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">HomeProduct</ui:define>
 		<ui:define name="content">
-			<h1>Pizza Store</h1><br></br>
-			<p:tabMenu activeIndex="0">
-				<p:menuitem value="Choose Pizza" outcome="main" />
-				<p:menuitem value="Choose Drinks" outcome="demos" />
-				<p:menuitem value="Pay Delivery" outcome="docs" />
-			</p:tabMenu>
+			<h1>Pizza Store</h1>
 			<br></br>
-			
+			<br></br>
+			<p:tabView>
+				<p:tab title="Choose Pizza">
+					<h:graphicImage name="layouts/images/pizza1.jpg"
+						style="width:200px; height:200px" />
+					<h:panelGroup>
+						<p:panel >
+							<div>
+						<div>
+							<p:outputLabel value="Name: " />
+							<p:outputLabel value="Product A" />
+						</div>
+						<div>
+							<p:outputLabel value="Price: " />
+							<p:outputLabel value="10$" />
+						</div>
+						<div>
+							<p:button value="order" />
+						</div>
+					</div>
+						</p:panel>
+					</h:panelGroup>
+				</p:tab>
+				<p:tab title="Choose Drinks">BB</p:tab>
+				<p:tab title="Pay Delivery">CC</p:tab>
+			</p:tabView>
 			<br></br>
 			<h:form id="form">
 				<p:commandButton actionListener="#{logic.close}" value="Order Now"

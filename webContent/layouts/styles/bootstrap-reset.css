@@ -23,3 +23,7 @@ fieldset legend {
 .ui-outputlabel {
   margin-bottom: 0;
 }
+
+.error-login {
+	color: red;
+}

@@ -12,19 +12,20 @@
 		<ui:define name="content">
 
 			<h3>Login System</h3>
+			<p:outputLabel styleClass="error-login" value = "#{data.messageError}">#{data.messageError}</p:outputLabel>
 			<h:form id="form" >
 				<div class="ui-fluid">
 					<div class="field">
 						<p:outputLabel for="username" value="username" />
-						<p:inputText id="username" />
+						<p:inputText required="true" id="username" value="#{data.username}"/>
 					</div>
 					<div class="field">
 						<p:outputLabel for="password" value="password" />
-						<p:inputText id="password" />
+						<p:inputText type="password" required="true" id="password" value="#{data.password}"/>
 					</div>
 				</div>
 				<br></br>
-				<p:commandButton actionListener="#{logic.close}" value="Login"
+				<p:commandButton actionListener="#{logic.login}" value="Login"
 					update="form" icon="ui-icon-check" />
 			</h:form>
 

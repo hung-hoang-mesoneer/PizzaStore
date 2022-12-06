@@ -1,2 +1,4 @@
 HomeProductData #class
 pizza.store.HomeProduct #namespace
+data pizza.store.Product #field
+data PERSISTENT #fieldModifier
