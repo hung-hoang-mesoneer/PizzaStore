@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Dec 06 16:24:10 ICT 2022]
+[>Created: Wed Dec 07 16:43:32 ICT 2022]
 184E169C5C622E4C 3.18 #module
 >Proto >Proto Collection #zClass
 Ls0 LoginProcess Big #zClass
@@ -102,9 +102,13 @@ Ls0 f8 actionDecl 'pizza.store.Login.LoginData out;
 ' #txt
 Ls0 f8 actionTable 'out=in;
 ' #txt
-Ls0 f8 actionCode 'import pizza.store.LoginService;
+Ls0 f8 actionCode 'import ch.ivyteam.ivy.security.ISession;
+import ch.ivyteam.ivy.security.ISecurityManager;
+import pizza.store.LoginService;
 
-in.isValid = LoginService.checkLogin(in.username,in.password);
+ISecurityManager securityManager = ch.ivyteam.ivy.security.internal.SecurityManager.getSecurityManager();
+ISession currentSession = securityManager.getCurrentSession();
+in.isValid = currentSession.loginSessionUser(in.username,in.password);
 
 if (!in.isValid) {
 	in.messageError = "login failed";	

@@ -10,7 +10,10 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">HomeProduct</ui:define>
 		<ui:define name="content">
-			<h1>Pizza Store</h1>
+			<div style="float: right; margin-right: 50px">
+				<p:commandLink value="Logout" actionListener="#{logic.logout}" />
+			</div>
+			<h1 style="text-align:center">Pizza Store</h1>
 			<br></br>
 			<br></br>
 			<p:tabView>
