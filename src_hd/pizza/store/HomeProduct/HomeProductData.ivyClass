@@ -1,4 +1,6 @@
 HomeProductData #class
 pizza.store.HomeProduct #namespace
-data pizza.store.Product #field
-data PERSISTENT #fieldModifier
+dataPizzas java.util.List<pizza.store.model.Product> #field
+dataPizzas PERSISTENT #fieldModifier
+dataDrinks java.util.List<pizza.store.model.Product> #field
+dataDrinks PERSISTENT #fieldModifier

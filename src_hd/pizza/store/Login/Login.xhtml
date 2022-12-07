@@ -10,25 +10,25 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">Login</ui:define>
 		<ui:define name="content">
-
-			<h3>Login System</h3>
-			<p:outputLabel styleClass="error-login" value = "#{data.messageError}">#{data.messageError}</p:outputLabel>
-			<h:form id="form" >
+			<div style="height: 500px;">
+				<h3>Login System</h3>
+			<p:outputLabel styleClass="error-login" value="#{data.messageError}">#{data.messageError}</p:outputLabel>
+			<h:form id="form" style="width:400px">
 				<div class="ui-fluid">
 					<div class="field">
 						<p:outputLabel for="username" value="username" />
-						<p:inputText required="true" id="username" value="#{data.username}"/>
+						<p:inputText required="true" id="username" value="#{data.username}" styleClass="form-control"/>
 					</div>
 					<div class="field">
 						<p:outputLabel for="password" value="password" />
-						<p:inputText type="password" required="true" id="password" value="#{data.password}"/>
+						<p:inputText type="password" required="true" id="password" value="#{data.password}" styleClass="form-control"/>
 					</div>
 				</div>
 				<br></br>
 				<p:commandButton actionListener="#{logic.login}" value="Login"
-					update="form" icon="ui-icon-check" />
+					update="form" icon="ui-icon-check" styleClass="btn btn-default"/>
 			</h:form>
-
+			</div>
 		</ui:define>
 	</ui:composition>
 </h:body>

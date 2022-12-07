@@ -6,10 +6,21 @@ public class Product {
 
 	private int price;
 
-	public Product(String name, int price) {
+	private String image;
+
+	public Product(String name, int price, String image) {
 		super();
 		this.name = name;
 		this.price = price;
+		this.image = image;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getName() {

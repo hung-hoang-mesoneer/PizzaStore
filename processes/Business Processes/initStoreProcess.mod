@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Dec 05 17:01:46 ICT 2022]
+[>Created: Wed Dec 07 10:15:05 ICT 2022]
 184E1759A6B17E94 3.18 #module
 >Proto >Proto Collection #zClass
 is0 initStoreProcess Big #zClass
@@ -18,8 +18,8 @@ is0 @EndTask f1 '' #zField
 is0 @RichDialog f3 '' #zField
 is0 @PushWFArc f4 '' #zField
 is0 @RichDialog f5 '' #zField
-is0 @PushWFArc f6 '' #zField
 is0 @PushWFArc f2 '' #zField
+is0 @PushWFArc f6 '' #zField
 >Proto is0 is0 initStoreProcess #zField
 is0 f0 outLink start.ivp #txt
 is0 f0 type pizza.store.Data #txt
@@ -95,10 +95,10 @@ is0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 is0 f5 392 42 112 44 -39 -8 #rect
 is0 f5 @|RichDialogIcon #fIcon
-is0 f6 expr out #txt
-is0 f6 280 64 392 64 #arcP
 is0 f2 expr out #txt
 is0 f2 504 64 577 64 #arcP
+is0 f6 expr out #txt
+is0 f6 280 64 392 64 #arcP
 >Proto is0 .type pizza.store.Data #txt
 >Proto is0 .processKind NORMAL #txt
 >Proto is0 0 0 32 24 18 0 #rect

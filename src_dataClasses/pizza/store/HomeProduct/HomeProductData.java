@@ -7,26 +7,46 @@ package pizza.store.HomeProduct;
 public class HomeProductData extends ch.ivyteam.ivy.scripting.objects.CompositeObject
 {
   /** SerialVersionUID */
-  private static final long serialVersionUID = -6896552699422117974L;
+  private static final long serialVersionUID = -6149504441137830822L;
 
-  private pizza.store.Product data;
+  private java.util.List<pizza.store.model.Product> dataPizzas;
 
   /**
-   * Gets the field data.
-   * @return the value of the field data; may be null.
+   * Gets the field dataPizzas.
+   * @return the value of the field dataPizzas; may be null.
    */
-  public pizza.store.Product getData()
+  public java.util.List<pizza.store.model.Product> getDataPizzas()
   {
-    return data;
+    return dataPizzas;
   }
 
   /**
-   * Sets the field data.
-   * @param _data the new value of the field data.
+   * Sets the field dataPizzas.
+   * @param _dataPizzas the new value of the field dataPizzas.
    */
-  public void setData(pizza.store.Product _data)
+  public void setDataPizzas(java.util.List<pizza.store.model.Product> _dataPizzas)
   {
-    data = _data;
+    dataPizzas = _dataPizzas;
+  }
+
+  private java.util.List<pizza.store.model.Product> dataDrinks;
+
+  /**
+   * Gets the field dataDrinks.
+   * @return the value of the field dataDrinks; may be null.
+   */
+  public java.util.List<pizza.store.model.Product> getDataDrinks()
+  {
+    return dataDrinks;
+  }
+
+  /**
+   * Sets the field dataDrinks.
+   * @param _dataDrinks the new value of the field dataDrinks.
+   */
+  public void setDataDrinks(java.util.List<pizza.store.model.Product> _dataDrinks)
+  {
+    dataDrinks = _dataDrinks;
   }
 
 }
