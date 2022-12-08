@@ -1,4 +1,0 @@
-OrderData #class
-pizza.store.Order #namespace
-data pizza.store.Data #field
-data PERSISTENT #fieldModifier

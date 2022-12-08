@@ -8,7 +8,7 @@ package pizza.store.Login;
 public class LoginData extends ch.ivyteam.ivy.scripting.objects.CompositeObject
 {
   /** SerialVersionUID */
-  private static final long serialVersionUID = 2767648688766661754L;
+  private static final long serialVersionUID = 1181073863635406461L;
 
   private java.lang.String username;
 
@@ -88,6 +88,26 @@ public class LoginData extends ch.ivyteam.ivy.scripting.objects.CompositeObject
   public void setMessageError(java.lang.String _messageError)
   {
     messageError = _messageError;
+  }
+
+  private java.lang.String currentRole;
+
+  /**
+   * Gets the field currentRole.
+   * @return the value of the field currentRole; may be null.
+   */
+  public java.lang.String getCurrentRole()
+  {
+    return currentRole;
+  }
+
+  /**
+   * Sets the field currentRole.
+   * @param _currentRole the new value of the field currentRole.
+   */
+  public void setCurrentRole(java.lang.String _currentRole)
+  {
+    currentRole = _currentRole;
   }
 
 }

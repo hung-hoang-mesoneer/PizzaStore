@@ -9,3 +9,5 @@ isValid Boolean #field
 isValid PERSISTENT #fieldModifier
 messageError String #field
 messageError PERSISTENT #fieldModifier
+currentRole String #field
+currentRole PERSISTENT #fieldModifier

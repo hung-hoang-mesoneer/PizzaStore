@@ -1,0 +1,4 @@
+OrderReceptionistData #class
+pizza.store.OrderReceptionist #namespace
+data pizza.store.Data #field
+data PERSISTENT #fieldModifier
