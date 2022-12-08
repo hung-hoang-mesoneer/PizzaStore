@@ -13,7 +13,7 @@
 			<div style="float: right; margin-right: 50px">
 				<p:commandLink value="Logout" actionListener="#{logic.logout}" />
 			</div>
-			<h1 style="text-align:center">Pizza Store</h1>
+			<h1 style="text-align: center">Pizza Store</h1>
 			<br></br>
 			<br></br>
 			<p:tabView>
@@ -26,7 +26,8 @@
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
-										<button class="btn btn-primary">Order</button>
+										<button class="btn btn-primary"
+											onclick="orderProduct(#{product.id}, '#{product.type}');">Order</button>
 									</div>
 								</div>
 							</div>
@@ -44,7 +45,8 @@
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
-										<button class="btn btn-primary">Order</button>
+										<button class="btn btn-primary"
+											onclick="orderProduct(#{product.id}, '#{product.type}');">Order</button>
 									</div>
 								</div>
 							</div>
@@ -79,7 +81,9 @@
 								<div class="form-group">
 									<label for="Delivery To" class="col-sm-2 control-label">Order
 										Details</label>
-									<div class="col-sm-10" style="margin: 50px">
+									<div class="col-sm-10" id="no-data-order"
+										style="margin-left: 250px; font-size: 20px; color: red;">No data</div>
+									<div class="col-sm-10" id="data-order" style="margin: 50px; display: none">
 										<table class="table">
 											<thead class="thead-light">
 												<tr>
@@ -89,27 +93,20 @@
 													<th scope="col">Price</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id="data-order-tbody-id">
 												<tr>
 													<th scope="row">1</th>
 													<td>Pizaa</td>
 													<td>1</td>
 													<td>$ 10</td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Coke</td>
-													<td>2</td>
-													<td>$ 20</td>
-												</tr>
 											</tbody>
 										</table>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" class="btn btn-primary">Order
-											now</button>
+										<div class="form-group">
+											<div class="col-sm-offset-1 col-sm-10">
+												<button type="submit" class="btn btn-primary">Order Now</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</form>
@@ -117,11 +114,20 @@
 					</div>
 				</p:tab>
 			</p:tabView>
-			<!-- <h:form id="form">
-				<p:commandButton actionListener="#{logic.close}" value="Order Now"
-					update="form" icon="ui-icon-check" />
-			</h:form> -->
-
+			<script type="text/javascript">
+				function orderProduct(productId, type) {
+					console.log(productId);
+					console.log(type);
+					// show notification that product was added to Cart
+					// $('.toast').toast('show');
+					// update data tab Pay Delivery
+					document.getElementById("no-data-order").style.display = "none";
+					document.getElementById("data-order").style.removeProperty('display');
+					
+					 var htmlTd = '<tr><th>1</th><td>Pizaa</td><td>1</td><td>$ 200</td></tr>';
+					 document.getElementById("data-order-tbody-id").append(htmlTd);
+				}
+			</script>
 		</ui:define>
 	</ui:composition>
 </h:body>

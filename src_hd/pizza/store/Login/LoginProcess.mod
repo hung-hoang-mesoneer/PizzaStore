@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Dec 08 13:52:39 ICT 2022]
+[>Created: Thu Dec 08 14:16:10 ICT 2022]
 184E169C5C622E4C 3.18 #module
 >Proto >Proto Collection #zClass
 Ls0 LoginProcess Big #zClass
@@ -265,7 +265,7 @@ Ls0 f24 387 173 584 352 #arcP
 Ls0 f24 1 432 352 #addKink
 Ls0 f24 1 0.15041856237322854 0 0 #arcLabel
 Ls0 f25 expr in #txt
-Ls0 f25 outCond 'in.isValid && in.currentRole == "Devlivery"' #txt
+Ls0 f25 outCond 'in.isValid && in.currentRole == "Delivery"' #txt
 Ls0 f25 384 176 592 440 #arcP
 Ls0 f25 1 384 440 #addKink
 Ls0 f25 0 0.9035247871475722 0 0 #arcLabel
