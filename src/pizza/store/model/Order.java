@@ -6,19 +6,19 @@ import java.util.List;
 import pizza.store.StatusOrder;
 
 public class Order {
-	private String orderId;
+	private int orderId;
 	private String name;
 	private String phone;
 	private String deliveryTo;
 	private StatusOrder status;
 	private Date date;
-	List<Integer> productIds;
+	private List<Integer> productIds;
 
 	public Order() {
 		super();
 	}
 
-	public Order(String orderId, String name, String phone, String deliveryTo,
+	public Order(int orderId, String name, String phone, String deliveryTo,
 			StatusOrder status, Date date, List<Integer> productIds) {
 		super();
 		this.orderId = orderId;
@@ -62,11 +62,11 @@ public class Order {
 		this.status = status;
 	}
 
-	public String getOrderId() {
+	public int getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 

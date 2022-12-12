@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Dec 07 14:31:52 ICT 2022]
+[>Created: Mon Dec 12 16:49:06 ICT 2022]
 184EB7F7E508BB7B 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderReceptionistProcess Big #zClass
@@ -29,26 +29,26 @@ Os0 f0 disableUIEvents true #txt
 Os0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <pizza.store.Data data> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f0 inParameterMapAction 'out.data=param.data;
-' #txt
+Os0 f0 inActionCode 'import pizza.store.service.ProductService;
+out.dataOrdered = ProductService.getOrders();' #txt
 Os0 f0 outParameterDecl '<pizza.store.Data data> result;
-' #txt
-Os0 f0 outParameterMapAction 'result.data=in.data;
 ' #txt
 Os0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start(Data)</name>
+        <nameStyle>11,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt
-Os0 f0 83 51 26 26 -29 15 #rect
+Os0 f0 84 52 24 24 -29 15 #rect
 Os0 f0 @|RichDialogInitStartIcon #fIcon
 Os0 f1 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
 Os0 f1 211 51 26 26 0 12 #rect
 Os0 f1 @|RichDialogProcessEndIcon #fIcon
 Os0 f2 expr out #txt
-Os0 f2 109 64 211 64 #arcP
+Os0 f2 108 64 211 64 #arcP
 Os0 f3 guid 184EB7F7E73A46D9 #txt
 Os0 f3 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
 Os0 f3 actionDecl 'pizza.store.OrderReceptionist.OrderReceptionistData out;

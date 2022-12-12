@@ -1,64 +1,84 @@
 package pizza.store.service;
 
+import static pizza.store.converter.ProductConverter.toProductDTOs;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 import pizza.store.ProductType;
 import pizza.store.StatusOrder;
+import pizza.store.dto.OrderDTO;
+import pizza.store.init.InitData;
 import pizza.store.model.Order;
 import pizza.store.model.Product;
+import pizza.store.utils.DateUtils;
 
 public class ProductService {
 
-	public static List<Order> orders = new ArrayList<Order>();
-	
 	public static List<Product> getPizzas() {
-		List<Product> products = new ArrayList<>();
-		products.add(new Product(1, "Pizza Hai San", 5, "pizza1.jpg",
-				ProductType.PIZZA));
-		products.add(new Product(2, "Pizza Cocktail", 10, "pizza2.jpg",
-				ProductType.PIZZA));
-		products.add(new Product(3, "Pizza New York", 12, "pizza3.jpg",
-				ProductType.PIZZA));
-		products.add(new Product(4, "Pizza Phomai", 17, "pizza4.jpg",
-				ProductType.PIZZA));
-		products.add(new Product(5, "Pizza Tomato", 20, "pizza5.jpg",
-				ProductType.PIZZA));
-		products.add(new Product(6, "Pizza breef", 36, "pizza6.jpg",
-				ProductType.PIZZA));
-
-		return products;
+		return InitData.products.stream()
+				.filter(item -> item.getType().equals(ProductType.PIZZA))
+				.collect(Collectors.toList());
 	}
 
 	public static List<Product> getDrinks() {
-		List<Product> products = new ArrayList<>();
-		products.add(new Product(7, "Tra Sua 1", 5, "drink1.jpg",
-				ProductType.DRINK));
-		products.add(new Product(8, "Tra Sua 2", 10, "drink2.jpg",
-				ProductType.DRINK));
-		products.add(new Product(9, "Pizza New York", 12, "drink3.jpg",
-				ProductType.DRINK));
-		products.add(new Product(10, "Pizza Phomai", 17, "drink4.jpg",
-				ProductType.DRINK));
-		products.add(new Product(11, "Pizza Tomato", 20, "drink5.jpg",
-				ProductType.DRINK));
-		products.add(new Product(12, "Pizza breef", 36, "drink6.jpg",
-				ProductType.DRINK));
-
-		return products;
+		return InitData.products.stream()
+				.filter(item -> item.getType().equals(ProductType.DRINK))
+				.collect(Collectors.toList());
 	}
 
 	public static void createOrder(Order order) {
-		String orderId = UUID.randomUUID().toString();
+		int orderId = 1;
+		if (!InitData.orders.isEmpty()) {
+			orderId = InitData.orders.stream()
+					.max(Comparator.comparing(Order::getOrderId)).get()
+					.getOrderId();
+		}
 		order.setOrderId(orderId);
 		order.setStatus(StatusOrder.PENDING);
 		order.setDate(new Date());
-		orders.add(order);
+		InitData.orders.add(order);
 	}
 
-	public static List<Order> getOrders() {
-		return orders;
+	public static List<OrderDTO> getOrders() {
+		List<OrderDTO> result = new ArrayList<>(InitData.orders.size());
+		if (!InitData.orders.isEmpty()) {
+			OrderDTO orderDTO = null;
+			for (Order order : InitData.orders) {
+				orderDTO = new OrderDTO();
+				orderDTO.setOrderId(order.getOrderId());
+				orderDTO.setName(order.getName());
+				orderDTO.setPhone(order.getPhone());
+				orderDTO.setDeliveryTo(order.getDeliveryTo());
+				orderDTO.setStatus(order.getStatus());
+				orderDTO.setDate(DateUtils.convertDate(order.getDate()));
+				orderDTO.setProducts(toProductDTOs(order.getProductIds()));
+				orderDTO.setTotalPrice(calculateTotalPrice(order
+						.getProductIds()));
+
+				result.add(orderDTO);
+			}
+		}
+
+		return result;
+	}
+
+	private static int calculateTotalPrice(List<Integer> productIds) {
+		int totalPrice = 0;
+		if (productIds != null && !productIds.isEmpty()) {
+			for (Integer id : productIds) {
+				Product product = InitData.products.stream()
+						.filter(item -> item.getId() == id).findFirst()
+						.orElse(null);
+				if (product != null) {
+					totalPrice = totalPrice + product.getPrice();
+				}
+			}
+		}
+
+		return totalPrice;
 	}
 }

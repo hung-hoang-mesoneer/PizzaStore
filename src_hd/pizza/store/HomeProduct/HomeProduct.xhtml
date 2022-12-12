@@ -22,12 +22,14 @@
 						<ui:repeat value="#{data.dataPizzas}" var="product">
 							<div class="card-body" style="float: left; margin: 10px">
 								<div style="width: 25rem;">
+								<h:form>
 									<p:graphicImage name="layouts/images/product/#{product.image}" />
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
 										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
 									</div>
+								</h:form>
 								</div>
 							</div>
 						</ui:repeat>
@@ -40,12 +42,14 @@
 						<ui:repeat value="#{data.dataDrinks}" var="product">
 							<div class="card-body" style="float: left; margin: 10px">
 								<div style="width: 25rem;">
+								<h:form>
 									<p:graphicImage name="layouts/images/drink/#{product.image}" />
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
 										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
 									</div>
+								</h:form>
 								</div>
 							</div>
 						</ui:repeat>

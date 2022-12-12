@@ -1,4 +1,4 @@
 OrderReceptionistData #class
 pizza.store.OrderReceptionist #namespace
-data pizza.store.Data #field
-data PERSISTENT #fieldModifier
+dataOrdered java.util.List<pizza.store.dto.OrderDTO> #field
+dataOrdered PERSISTENT #fieldModifier
