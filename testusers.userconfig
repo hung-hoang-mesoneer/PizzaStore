@@ -3,7 +3,7 @@
     <user>
         <username>staff1</username>
         <password>123</password>
-        <fullName>customer</fullName>
+        <fullName>Customer</fullName>
     </user>
     <user>
         <username>staff2</username>

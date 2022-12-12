@@ -6,9 +6,16 @@ dataPizzas PERSISTENT #fieldModifier
 dataDrinks java.util.List<pizza.store.model.Product> #field
 dataDrinks 'init data' #fieldComment
 dataDrinks PERSISTENT #fieldModifier
-pizzaOrders java.util.List<pizza.store.model.Product> #field
-pizzaOrders 'ordered data' #fieldComment
-pizzaOrders PERSISTENT #fieldModifier
-drinkOrders java.util.List<pizza.store.model.Product> #field
-drinkOrders 'ordered data' #fieldComment
-drinkOrders PERSISTENT #fieldModifier
+dataOrder pizza.store.model.Order #field
+dataOrder 'data ordered' #fieldComment
+dataOrder PERSISTENT #fieldModifier
+nameTest String #field
+nameTest PERSISTENT #fieldModifier
+phoneTest String #field
+phoneTest PERSISTENT #fieldModifier
+deliveryToTest String #field
+deliveryToTest PERSISTENT #fieldModifier
+order pizza.store.model.Order #field
+order PERSISTENT #fieldModifier
+NgModal pizza.store.model.NGModal #field
+NgModal PERSISTENT #fieldModifier

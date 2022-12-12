@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Dec 08 14:23:37 ICT 2022]
+[>Created: Mon Dec 12 11:00:04 ICT 2022]
 184E19F71E2C7142 3.18 #module
 >Proto >Proto Collection #zClass
 Hs0 HomeProductProcess Big #zClass
@@ -30,6 +30,8 @@ Hs0 @RichDialogProcessStart f13 '' #zField
 Hs0 @RichDialogProcessEnd f1 '' #zField
 Hs0 @PushWFArc f2 '' #zField
 Hs0 @RichDialogProcessEnd f14 '' #zField
+Hs0 @GridStep f16 '' #zField
+Hs0 @PushWFArc f17 '' #zField
 Hs0 @PushWFArc f15 '' #zField
 >Proto Hs0 Hs0 HomeProductProcess #zField
 Hs0 f0 guid 184E19F7209B2DE1 #txt
@@ -39,12 +41,18 @@ Hs0 f0 disableUIEvents true #txt
 Hs0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <> param = methodEvent.getInputArguments();
 ' #txt
+Hs0 f0 inActionCode 'import pizza.store.model.Order;
+import pizza.store.model.NGModal;
+out.NgModal = new NGModal();
+out.order = new Order();' #txt
 Hs0 f0 outParameterDecl '<> result;
 ' #txt
 Hs0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start()</name>
+        <nameStyle>7,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt
@@ -161,10 +169,31 @@ Hs0 f1 @|RichDialogProcessEndIcon #fIcon
 Hs0 f2 expr out #txt
 Hs0 f2 288 64 403 64 #arcP
 Hs0 f14 type pizza.store.HomeProduct.HomeProductData #txt
-Hs0 f14 243 179 26 26 0 12 #rect
+Hs0 f14 387 179 26 26 0 12 #rect
 Hs0 f14 @|RichDialogProcessEndIcon #fIcon
+Hs0 f16 actionDecl 'pizza.store.HomeProduct.HomeProductData out;
+' #txt
+Hs0 f16 actionTable 'out=in;
+' #txt
+Hs0 f16 actionCode 'import pizza.store.service.ProductService;
+
+ProductService.createOrder(in.order);' #txt
+Hs0 f16 type pizza.store.HomeProduct.HomeProductData #txt
+Hs0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Create order</name>
+        <nameStyle>12
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Hs0 f16 168 170 112 44 -34 -8 #rect
+Hs0 f16 @|StepIcon #fIcon
+Hs0 f17 expr out #txt
+Hs0 f17 109 192 168 192 #arcP
 Hs0 f15 expr out #txt
-Hs0 f15 109 192 243 192 #arcP
+Hs0 f15 280 192 387 192 #arcP
 >Proto Hs0 .type pizza.store.HomeProduct.HomeProductData #txt
 >Proto Hs0 .processKind HTML_DIALOG #txt
 >Proto Hs0 -8 -8 16 16 16 26 #rect
@@ -179,5 +208,7 @@ Hs0 f11 mainOut f10 tail #connect
 Hs0 f10 head f9 mainIn #connect
 Hs0 f6 mainOut f2 tail #connect
 Hs0 f2 head f1 mainIn #connect
-Hs0 f13 mainOut f15 tail #connect
+Hs0 f13 mainOut f17 tail #connect
+Hs0 f17 head f16 mainIn #connect
+Hs0 f16 mainOut f15 tail #connect
 Hs0 f15 head f14 mainIn #connect

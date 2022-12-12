@@ -1,6 +1,0 @@
-Product #class
-pizza.store #namespace
-name String #field
-name PERSISTENT #fieldModifier
-price Integer #field
-price PERSISTENT #fieldModifier

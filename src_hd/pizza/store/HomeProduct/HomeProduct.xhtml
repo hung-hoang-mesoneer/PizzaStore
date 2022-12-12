@@ -27,7 +27,7 @@
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
 										<button class="btn btn-primary"
-											onclick="orderProduct(#{product.id}, '#{product.type}');">Order</button>
+											onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}');">Order</button>
 									</div>
 								</div>
 							</div>
@@ -46,7 +46,7 @@
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
 										<button class="btn btn-primary"
-											onclick="orderProduct(#{product.id}, '#{product.type}');">Order</button>
+											onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}');">Order</button>
 									</div>
 								</div>
 							</div>
@@ -56,34 +56,44 @@
 				<p:tab title="Pay Delivery">
 					<div class="container">
 						<div class="row">
-							<form class="form-horizontal">
+							<h:form id="form" styleClass="form-horizontal">
 								<div class="form-group">
 									<label for="Name" class="col-sm-2 control-label">Name</label>
 									<div class="col-sm-6">
-										<input class="form-control" placeholder="Name" />
+										<!-- <input class="form-control" placeholder="Name" /> -->
+										<p:inputText value="#{data.order.name}" id="name"
+											styleClass="form-control"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Phone Number" class="col-sm-2 control-label">Phone
 										Number</label>
 									<div class="col-sm-6">
-										<input type="number" class="form-control"
-											placeholder="Phone Number" />
+										<!-- <input type="number" class="form-control"
+											placeholder="Phone Number" /> -->
+
+										<p:inputText value="#{data.order.phone}" id="phone"
+											styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Delivery To" class="col-sm-2 control-label">Delivery
 										To</label>
 									<div class="col-sm-6">
-										<input class="form-control" placeholder="Delivery To" />
+										<!-- <input class="form-control" placeholder="Delivery To" /> -->
+										<p:inputText value="#{data.order.deliveryTo}" id="deliveryTo"
+											styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Delivery To" class="col-sm-2 control-label">Order
 										Details</label>
 									<div class="col-sm-10" id="no-data-order"
-										style="margin-left: 250px; font-size: 20px; color: red;">No data</div>
-									<div class="col-sm-10" id="data-order" style="margin: 50px; display: none">
+										style="margin-left: 250px; font-size: 20px; color: red;">No
+										data</div>
+									<div class="col-sm-10" id="data-order"
+										style="margin: 50px; display: none">
+
 										<table class="table">
 											<thead class="thead-light">
 												<tr>
@@ -94,38 +104,60 @@
 												</tr>
 											</thead>
 											<tbody id="data-order-tbody-id">
+											</tbody>
+											<tbody>
 												<tr>
-													<th scope="row">1</th>
-													<td>Pizaa</td>
-													<td>1</td>
-													<td>$ 10</td>
+													<th scope="col"></th>
+													<th scope="col"></th>
+													<th scope="col"></th>
+													<th scope="col"><SPAN>Total: </SPAN><SPAN
+														id="total-price">0</SPAN><SPAN> $</SPAN></th>
 												</tr>
 											</tbody>
 										</table>
 										<div class="form-group">
 											<div class="col-sm-offset-1 col-sm-10">
-												<button type="submit" class="btn btn-primary">Order Now</button>
+												<!-- <p:commandButton actionListener="#{logic.order}"
+													value="Order Now" styleClass="btn btn-primary" /> -->
 											</div>
 										</div>
 									</div>
 								</div>
-							</form>
+								<div class="form-group">
+									<div class="col-sm-offset-1 col-sm-10">
+												<p:commandButton actionListener="#{logic.order}"
+													update="form" value="Order Now" styleClass="btn btn-primary" />
+									</div>
+								</div>
+							</h:form>
 						</div>
 					</div>
 				</p:tab>
 			</p:tabView>
 			<script type="text/javascript">
-				function orderProduct(productId, type) {
-					console.log(productId);
-					console.log(type);
+				function orderProduct(id, name, type, price) {
 					// show notification that product was added to Cart
 					// $('.toast').toast('show');
 					// update data tab Pay Delivery
 					document.getElementById("no-data-order").style.display = "none";
 					document.getElementById("data-order").style.removeProperty('display');
+					var index;
+					var total;
+					var lengthTr = document.getElementsByClassName("order-index").length;
+					// check current index.
+					if (lengthTr === 0){
+						index = 1;
+						total = +price;
+					} else {
+						index = +document.getElementsByClassName("order-index")[lengthTr - 1].textContent + 1;
+						// get current total price.
+						total = +document.getElementById("total-price").textContent + (+price);
+						// check update quality and price if product exist in cart.
+					}
 					
-					 var htmlTd = '<tr><th>1</th><td>Pizaa</td><td>1</td><td>$ 200</td></tr>';
-					 document.getElementById("data-order-tbody-id").append(htmlTd);
+					 var htmlTd = '<tr><th class = "order-index" product-id = "'+id+'">'+index+'</th><td>'+name+'</td><td>1</td><td><SPAN product-price = "'+price+'">'+price+'</SPAN><SPAN> $</SPAN></td></tr>';
+					 document.getElementById("data-order-tbody-id").innerHTML += htmlTd;
+					 document.getElementById("total-price").innerHTML = total;
 				}
 			</script>
 		</ui:define>
