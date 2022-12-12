@@ -26,8 +26,7 @@
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
-										<button class="btn btn-primary"
-											onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}');">Order</button>
+										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
 									</div>
 								</div>
 							</div>
@@ -45,8 +44,7 @@
 									<div class="card-body">
 										<h5 class="card-title">#{product.name}</h5>
 										<h5 class="card-title">Price: #{product.price} $</h5>
-										<button class="btn btn-primary"
-											onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}');">Order</button>
+										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
 									</div>
 								</div>
 							</div>
@@ -60,19 +58,15 @@
 								<div class="form-group">
 									<label for="Name" class="col-sm-2 control-label">Name</label>
 									<div class="col-sm-6">
-										<!-- <input class="form-control" placeholder="Name" /> -->
-										<p:inputText value="#{data.order.name}" id="name"
-											styleClass="form-control"/>
+										<p:inputText required="true" value="#{data.order.name}" id="name"
+											styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Phone Number" class="col-sm-2 control-label">Phone
 										Number</label>
 									<div class="col-sm-6">
-										<!-- <input type="number" class="form-control"
-											placeholder="Phone Number" /> -->
-
-										<p:inputText value="#{data.order.phone}" id="phone"
+										<p:inputText required="true" value="#{data.order.phone}" id="phone"
 											styleClass="form-control" />
 									</div>
 								</div>
@@ -80,8 +74,7 @@
 									<label for="Delivery To" class="col-sm-2 control-label">Delivery
 										To</label>
 									<div class="col-sm-6">
-										<!-- <input class="form-control" placeholder="Delivery To" /> -->
-										<p:inputText value="#{data.order.deliveryTo}" id="deliveryTo"
+										<p:inputText required="true" value="#{data.order.deliveryTo}" id="deliveryTo"
 											styleClass="form-control" />
 									</div>
 								</div>
@@ -90,7 +83,7 @@
 										Details</label>
 									<div class="col-sm-10" id="no-data-order"
 										style="margin-left: 250px; font-size: 20px; color: red;">No
-										data</div>
+										item in cart</div>
 									<div class="col-sm-10" id="data-order"
 										style="margin: 50px; display: none">
 
@@ -117,16 +110,11 @@
 										</table>
 										<div class="form-group">
 											<div class="col-sm-offset-1 col-sm-10">
-												<!-- <p:commandButton actionListener="#{logic.order}"
-													value="Order Now" styleClass="btn btn-primary" /> -->
+												<p:commandButton actionListener="#{logic.order}"
+													update="form" value="Order Now"
+													styleClass="btn btn-primary"/>
 											</div>
 										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-1 col-sm-10">
-												<p:commandButton actionListener="#{logic.order}"
-													update="form" value="Order Now" styleClass="btn btn-primary" />
 									</div>
 								</div>
 							</h:form>

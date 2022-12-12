@@ -1,8 +1,0 @@
-InfoOrder #class
-pizza.store #namespace
-name String #field
-name PERSISTENT #fieldModifier
-phone String #field
-phone PERSISTENT #fieldModifier
-deliveryTo String #field
-deliveryTo PERSISTENT #fieldModifier

@@ -1,4 +1,0 @@
-Order #class
-pizza.store #namespace
-infoOrder pizza.store.InfoOrder #field
-infoOrder PERSISTENT #fieldModifier

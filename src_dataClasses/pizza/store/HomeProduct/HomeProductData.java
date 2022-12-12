@@ -7,7 +7,7 @@ package pizza.store.HomeProduct;
 public class HomeProductData extends ch.ivyteam.ivy.scripting.objects.CompositeObject
 {
   /** SerialVersionUID */
-  private static final long serialVersionUID = 5776754657175447764L;
+  private static final long serialVersionUID = -3184837996687542224L;
 
   /**
    * init data
@@ -55,89 +55,6 @@ public class HomeProductData extends ch.ivyteam.ivy.scripting.objects.CompositeO
     dataDrinks = _dataDrinks;
   }
 
-  /**
-   * data ordered
-   */
-  private pizza.store.model.Order dataOrder;
-
-  /**
-   * Gets the field dataOrder.
-   * @return the value of the field dataOrder; may be null.
-   */
-  public pizza.store.model.Order getDataOrder()
-  {
-    return dataOrder;
-  }
-
-  /**
-   * Sets the field dataOrder.
-   * @param _dataOrder the new value of the field dataOrder.
-   */
-  public void setDataOrder(pizza.store.model.Order _dataOrder)
-  {
-    dataOrder = _dataOrder;
-  }
-
-  private java.lang.String nameTest;
-
-  /**
-   * Gets the field nameTest.
-   * @return the value of the field nameTest; may be null.
-   */
-  public java.lang.String getNameTest()
-  {
-    return nameTest;
-  }
-
-  /**
-   * Sets the field nameTest.
-   * @param _nameTest the new value of the field nameTest.
-   */
-  public void setNameTest(java.lang.String _nameTest)
-  {
-    nameTest = _nameTest;
-  }
-
-  private java.lang.String phoneTest;
-
-  /**
-   * Gets the field phoneTest.
-   * @return the value of the field phoneTest; may be null.
-   */
-  public java.lang.String getPhoneTest()
-  {
-    return phoneTest;
-  }
-
-  /**
-   * Sets the field phoneTest.
-   * @param _phoneTest the new value of the field phoneTest.
-   */
-  public void setPhoneTest(java.lang.String _phoneTest)
-  {
-    phoneTest = _phoneTest;
-  }
-
-  private java.lang.String deliveryToTest;
-
-  /**
-   * Gets the field deliveryToTest.
-   * @return the value of the field deliveryToTest; may be null.
-   */
-  public java.lang.String getDeliveryToTest()
-  {
-    return deliveryToTest;
-  }
-
-  /**
-   * Sets the field deliveryToTest.
-   * @param _deliveryToTest the new value of the field deliveryToTest.
-   */
-  public void setDeliveryToTest(java.lang.String _deliveryToTest)
-  {
-    deliveryToTest = _deliveryToTest;
-  }
-
   private pizza.store.model.Order order;
 
   /**
@@ -158,24 +75,24 @@ public class HomeProductData extends ch.ivyteam.ivy.scripting.objects.CompositeO
     order = _order;
   }
 
-  private pizza.store.model.NGModal NgModal;
+  private java.util.List<java.lang.Integer> productOrders;
 
   /**
-   * Gets the field NgModal.
-   * @return the value of the field NgModal; may be null.
+   * Gets the field productOrders.
+   * @return the value of the field productOrders; may be null.
    */
-  public pizza.store.model.NGModal getNgModal()
+  public java.util.List<java.lang.Integer> getProductOrders()
   {
-    return NgModal;
+    return productOrders;
   }
 
   /**
-   * Sets the field NgModal.
-   * @param _NgModal the new value of the field NgModal.
+   * Sets the field productOrders.
+   * @param _productOrders the new value of the field productOrders.
    */
-  public void setNgModal(pizza.store.model.NGModal _NgModal)
+  public void setProductOrders(java.util.List<java.lang.Integer> _productOrders)
   {
-    NgModal = _NgModal;
+    productOrders = _productOrders;
   }
 
 }

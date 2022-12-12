@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Dec 12 11:00:04 ICT 2022]
+[>Created: Mon Dec 12 14:55:50 ICT 2022]
 184E19F71E2C7142 3.18 #module
 >Proto >Proto Collection #zClass
 Hs0 HomeProductProcess Big #zClass
@@ -33,6 +33,9 @@ Hs0 @RichDialogProcessEnd f14 '' #zField
 Hs0 @GridStep f16 '' #zField
 Hs0 @PushWFArc f17 '' #zField
 Hs0 @PushWFArc f15 '' #zField
+Hs0 @RichDialogMethodStart f23 '' #zField
+Hs0 @RichDialogProcessEnd f24 '' #zField
+Hs0 @PushWFArc f25 '' #zField
 >Proto Hs0 Hs0 HomeProductProcess #zField
 Hs0 f0 guid 184E19F7209B2DE1 #txt
 Hs0 f0 type pizza.store.HomeProduct.HomeProductData #txt
@@ -41,10 +44,13 @@ Hs0 f0 disableUIEvents true #txt
 Hs0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <> param = methodEvent.getInputArguments();
 ' #txt
-Hs0 f0 inActionCode 'import pizza.store.model.Order;
+Hs0 f0 inActionCode 'import pizza.store.model.Product;
+import java.util.ArrayList;
+import pizza.store.model.Order;
 import pizza.store.model.NGModal;
-out.NgModal = new NGModal();
-out.order = new Order();' #txt
+
+out.order = new Order();
+out.productOrders = new ArrayList<Integer>();' #txt
 Hs0 f0 outParameterDecl '<> result;
 ' #txt
 Hs0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -176,8 +182,9 @@ Hs0 f16 actionDecl 'pizza.store.HomeProduct.HomeProductData out;
 Hs0 f16 actionTable 'out=in;
 ' #txt
 Hs0 f16 actionCode 'import pizza.store.service.ProductService;
-
-ProductService.createOrder(in.order);' #txt
+in.order.setProductIds(in.productOrders);
+ProductService.createOrder(in.order);
+in.productOrders.clear();' #txt
 Hs0 f16 type pizza.store.HomeProduct.HomeProductData #txt
 Hs0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -194,6 +201,32 @@ Hs0 f17 expr out #txt
 Hs0 f17 109 192 168 192 #arcP
 Hs0 f15 expr out #txt
 Hs0 f15 280 192 387 192 #arcP
+Hs0 f23 guid 185054E627E1F978 #txt
+Hs0 f23 type pizza.store.HomeProduct.HomeProductData #txt
+Hs0 f23 method addItemToCart(java.lang.Integer) #txt
+Hs0 f23 disableUIEvents false #txt
+Hs0 f23 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
+<java.lang.Integer id> param = methodEvent.getInputArguments();
+' #txt
+Hs0 f23 inActionCode out.productOrders.add(param.id); #txt
+Hs0 f23 outParameterDecl '<> result;
+' #txt
+Hs0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>addItemToCart(Integer)</name>
+        <nameStyle>22,5,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Hs0 f23 83 403 26 26 -64 15 #rect
+Hs0 f23 @|RichDialogMethodStartIcon #fIcon
+Hs0 f24 type pizza.store.HomeProduct.HomeProductData #txt
+Hs0 f24 275 403 26 26 0 12 #rect
+Hs0 f24 @|RichDialogProcessEndIcon #fIcon
+Hs0 f25 expr out #txt
+Hs0 f25 109 416 275 416 #arcP
 >Proto Hs0 .type pizza.store.HomeProduct.HomeProductData #txt
 >Proto Hs0 .processKind HTML_DIALOG #txt
 >Proto Hs0 -8 -8 16 16 16 26 #rect
@@ -212,3 +245,5 @@ Hs0 f13 mainOut f17 tail #connect
 Hs0 f17 head f16 mainIn #connect
 Hs0 f16 mainOut f15 tail #connect
 Hs0 f15 head f14 mainIn #connect
+Hs0 f23 mainOut f25 tail #connect
+Hs0 f25 head f24 mainIn #connect

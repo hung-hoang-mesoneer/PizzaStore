@@ -1,12 +1,12 @@
 package pizza.store.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import pizza.store.ProductType;
 import pizza.store.StatusOrder;
-import pizza.store.model.NGModal;
 import pizza.store.model.Order;
 import pizza.store.model.Product;
 
@@ -50,30 +50,12 @@ public class ProductService {
 		return products;
 	}
 
-	public static void testModal(NGModal test) {
-		System.out.println("AAA");
-		System.out.println("AAA");
-//		orders.add(order);
-	}
-	
 	public static void createOrder(Order order) {
 		String orderId = UUID.randomUUID().toString();
 		order.setOrderId(orderId);
 		order.setStatus(StatusOrder.PENDING);
-		System.out.println("AAA");
-		System.out.println("AAA");
-//		orders.add(order);
-	}
-	public static void test() {
-		System.out.println("AAA");
-		System.out.println("AAA");
-//		orders.add(order);
-	}
-
-	public static void test(String name) {
-		System.out.println("AAA");
-		System.out.println("AAA");
-//		orders.add(order);
+		order.setDate(new Date());
+		orders.add(order);
 	}
 
 	public static List<Order> getOrders() {
