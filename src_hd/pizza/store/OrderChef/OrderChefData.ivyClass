@@ -1,2 +1,4 @@
 OrderChefData #class
 pizza.store.OrderChef #namespace
+dataOrdered java.util.List<pizza.store.dto.OrderDTO> #field
+dataOrdered PERSISTENT #fieldModifier

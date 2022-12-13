@@ -35,25 +35,27 @@
 											<th scope="col">Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Pizaa</td>
-											<td>1</td>
-											<td>$ 10</td>
-											<td>Pizaa</td>
-											<td>1</td>
-											<td>$ 10</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Coke</td>
-											<td>2</td>
-											<td>$ 20</td>
-											<td>Pizaa</td>
-											<td>1</td>
-											<td>$ 10</td>
-										</tr>
+									<tbody id = "data-table">
+										<ui:repeat value="#{data.dataOrdered}" var="order">
+											<tr id = "order#{order.orderId}">
+												<th scope="row">#{order.orderId}</th>
+												<td>#{order.date}</td>
+												<td>
+													<ui:repeat value="#{order.products}" var="item">
+														<SPAN>#{item.name} x #{item.quantity}</SPAN>
+														<br/>
+													</ui:repeat>
+												</td>
+												<td>#{order.name}</td>
+												<td>#{order.phone}</td>
+												<td>#{order.totalPrice} $</td>
+												<td>
+													<h:form>
+														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}"  value="Done" styleClass="btn btn-primary"/>
+													</h:form>
+												</td>
+											</tr>
+										</ui:repeat>
 									</tbody>
 								</table>
 							</div>
@@ -61,7 +63,12 @@
 					</form>
 				</div>
 			</div>
-			<!-- <p:commandButton actionListener="#{logic.close}" value="Proceed" update="form" icon="ui-icon-check" /> -->
+			<script type="text/javascript">
+				function updateOrders(id) {
+					var nodeChild = document.getElementById('order'+id+'');
+					document.getElementById("data-table").removeChild(nodeChild); 
+				}
+			</script>
 		</ui:define>
 	</ui:composition>
 </h:body>

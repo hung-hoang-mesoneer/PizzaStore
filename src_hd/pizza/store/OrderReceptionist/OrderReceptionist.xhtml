@@ -56,7 +56,8 @@
 												<td>#{order.totalPrice} $</td>
 												<td>
 													<h:form>
-														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}"  value="Confirm" styleClass="btn btn-primary"/><!-- onclick="updateOrders(#{order.orderId})" -->
+														<!-- onclick="updateOrders(#{order.orderId})" -->
+														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}"  value="Confirm" styleClass="btn btn-primary"/>
 														<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}" value="Cancel" styleClass="btn btn-danger"/>
 													</h:form>
 												</td>

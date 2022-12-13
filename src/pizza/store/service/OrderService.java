@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import pizaa.store.security.SecurityUtils;
 import pizza.store.StatusOrder;
 import pizza.store.dto.OrderDTO;
 import pizza.store.init.InitData;
@@ -46,11 +47,33 @@ public class OrderService {
 			result = InitData.ordersDTO
 					.stream()
 					.filter(item -> item.getStatus()
-							.equals(StatusOrder.PENDING))
+							.equals(getStatusOrderByCurrentRole()))
 					.collect(Collectors.toList());
 		}
 
 		return result;
+	}
+
+	private static StatusOrder getStatusOrderByCurrentRole() {
+		String roleName = SecurityUtils.getCurrentRole();
+		StatusOrder statusOrder = null;
+
+		switch (roleName) {
+		case "Receptionist":
+			statusOrder = StatusOrder.PENDING;
+			break;
+		case "Chef":
+			statusOrder = StatusOrder.CONFIRMED;
+			break;
+		case "Delivery":
+			statusOrder = StatusOrder.COOKED;
+			break;
+
+		default:
+			break;
+		}
+
+		return statusOrder;
 	}
 
 	private static int calculateTotalPrice(List<Integer> productIds) {
@@ -76,7 +99,5 @@ public class OrderService {
 		if (orderDTO != null) {
 			orderDTO.setStatus(statusOrder);
 		}
-		
-		System.out.println("test");
 	}
 }
