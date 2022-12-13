@@ -1,7 +1,7 @@
 package pizza.store.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import pizza.store.StatusOrder;
 
@@ -12,14 +12,14 @@ public class Order {
 	private String deliveryTo;
 	private StatusOrder status;
 	private Date date;
-	private List<Integer> productIds;
+	private ArrayList<Integer> productIds;
 
 	public Order() {
 		super();
 	}
 
 	public Order(int orderId, String name, String phone, String deliveryTo,
-			StatusOrder status, Date date, List<Integer> productIds) {
+			StatusOrder status, Date date, ArrayList<Integer> productIds) {
 		super();
 		this.orderId = orderId;
 		this.name = name;
@@ -38,11 +38,11 @@ public class Order {
 		this.date = date;
 	}
 
-	public List<Integer> getProductIds() {
+	public ArrayList<Integer> getProductIds() {
 		return productIds;
 	}
 
-	public void setProductIds(List<Integer> productIds) {
+	public void setProductIds(ArrayList<Integer> productIds) {
 		this.productIds = productIds;
 	}
 

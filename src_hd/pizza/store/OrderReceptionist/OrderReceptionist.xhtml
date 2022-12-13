@@ -10,6 +10,11 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">Order</ui:define>
 		<ui:define name="content">
+		<!-- 	<div style="float: right; margin-right: 50px">
+				<h:form id="form">
+					<p:commandButton actionListener="#{logic.logout}" value="Logout" />
+				</h:form>
+			</div> -->
 			<h1 style="text-align: center">Pizza Store</h1>
 			<h2 style="text-align: center">Pending orders</h2>
 			<div class="container">
@@ -35,18 +40,25 @@
 											<th scope="col">Action</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id = "data-table">
 										<ui:repeat value="#{data.dataOrdered}" var="order">
-											<tr>
+											<tr id = "order#{order.orderId}">
 												<th scope="row">#{order.orderId}</th>
 												<td>#{order.date}</td>
-												<td>#{order.name}</td>
+												<td>
+													<ui:repeat value="#{order.products}" var="item">
+														<SPAN>#{item.name} x #{item.quantity}</SPAN>
+														<br/>
+													</ui:repeat>
+												</td>
 												<td>#{order.name}</td>
 												<td>#{order.phone}</td>
 												<td>#{order.totalPrice} $</td>
 												<td>
-													<button class="btn btn-primary">Confirm</button>
-													<button class="btn btn-danger">Cancel</button>
+													<h:form>
+														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}"  value="Confirm" styleClass="btn btn-primary"/><!-- onclick="updateOrders(#{order.orderId})" -->
+														<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}" value="Cancel" styleClass="btn btn-danger"/>
+													</h:form>
 												</td>
 											</tr>
 										</ui:repeat>
@@ -57,6 +69,12 @@
 					</form>
 				</div>
 			</div>
+			<script type="text/javascript">
+				function updateOrders(id) {
+					var nodeChild = document.getElementById('order'+id+'');
+					document.getElementById("data-table").removeChild(nodeChild); 
+				}
+			</script>
 		</ui:define>
 	</ui:composition>
 </h:body>

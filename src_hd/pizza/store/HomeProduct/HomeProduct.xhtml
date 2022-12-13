@@ -11,7 +11,9 @@
 		<ui:define name="title">HomeProduct</ui:define>
 		<ui:define name="content">
 			<div style="float: right; margin-right: 50px">
-				<p:commandLink value="Logout" actionListener="#{logic.logout}" />
+				<h:form id="form">
+					<p:commandButton actionListener="#{logic.logout}" value="Logout" />
+				</h:form>
 			</div>
 			<h1 style="text-align: center">Pizza Store</h1>
 			<br></br>
@@ -22,14 +24,18 @@
 						<ui:repeat value="#{data.dataPizzas}" var="product">
 							<div class="card-body" style="float: left; margin: 10px">
 								<div style="width: 25rem;">
-								<h:form>
-									<p:graphicImage name="layouts/images/product/#{product.image}" />
-									<div class="card-body">
-										<h5 class="card-title">#{product.name}</h5>
-										<h5 class="card-title">Price: #{product.price} $</h5>
-										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
-									</div>
-								</h:form>
+									<h:form>
+										<p:graphicImage name="layouts/images/product/#{product.image}" />
+										<div class="card-body">
+											<h5 class="card-title">#{product.name}</h5>
+											<h5 class="card-title">Price: #{product.price} $</h5>
+											<p:commandButton
+												actionListener="#{logic.addItemToCart(product.id)}"
+												value="Order"
+												onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')"
+												styleClass="btn btn-primary" />
+										</div>
+									</h:form>
 								</div>
 							</div>
 						</ui:repeat>
@@ -42,14 +48,18 @@
 						<ui:repeat value="#{data.dataDrinks}" var="product">
 							<div class="card-body" style="float: left; margin: 10px">
 								<div style="width: 25rem;">
-								<h:form>
-									<p:graphicImage name="layouts/images/drink/#{product.image}" />
-									<div class="card-body">
-										<h5 class="card-title">#{product.name}</h5>
-										<h5 class="card-title">Price: #{product.price} $</h5>
-										<p:commandButton actionListener="#{logic.addItemToCart(product.id)}" value="Order" onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')" styleClass="btn btn-primary"/>
-									</div>
-								</h:form>
+									<h:form>
+										<p:graphicImage name="layouts/images/drink/#{product.image}" />
+										<div class="card-body">
+											<h5 class="card-title">#{product.name}</h5>
+											<h5 class="card-title">Price: #{product.price} $</h5>
+											<p:commandButton
+												actionListener="#{logic.addItemToCart(product.id)}"
+												value="Order"
+												onclick="orderProduct(#{product.id}, '#{product.name}', '#{product.type}', '#{product.price}')"
+												styleClass="btn btn-primary" />
+										</div>
+									</h:form>
 								</div>
 							</div>
 						</ui:repeat>
@@ -62,24 +72,24 @@
 								<div class="form-group">
 									<label for="Name" class="col-sm-2 control-label">Name</label>
 									<div class="col-sm-6">
-										<p:inputText required="true" value="#{data.order.name}" id="name"
-											styleClass="form-control" />
+										<p:inputText required="true" value="#{data.order.name}"
+											id="name" styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Phone Number" class="col-sm-2 control-label">Phone
 										Number</label>
 									<div class="col-sm-6">
-										<p:inputText required="true" value="#{data.order.phone}" id="phone"
-											styleClass="form-control" />
+										<p:inputText required="true" value="#{data.order.phone}"
+											id="phone" styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="Delivery To" class="col-sm-2 control-label">Delivery
 										To</label>
 									<div class="col-sm-6">
-										<p:inputText required="true" value="#{data.order.deliveryTo}" id="deliveryTo"
-											styleClass="form-control" />
+										<p:inputText required="true" value="#{data.order.deliveryTo}"
+											id="deliveryTo" styleClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -116,7 +126,7 @@
 											<div class="col-sm-offset-1 col-sm-10">
 												<p:commandButton actionListener="#{logic.order}"
 													update="form" value="Order Now"
-													styleClass="btn btn-primary"/>
+													styleClass="btn btn-primary" />
 											</div>
 										</div>
 									</div>
