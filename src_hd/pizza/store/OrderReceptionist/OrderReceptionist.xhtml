@@ -10,9 +10,9 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">Order</ui:define>
 		<ui:define name="content">
-		<!-- 	<div style="float: right; margin-right: 50px">
+	<!-- 	<div style="float: right; margin-right: 50px">
 				<h:form id="form">
-					<p:commandButton actionListener="#{logic.logout}" value="Logout" />
+					<p:commandButton actionListener="#{logic.logout1}" value="Logout" />
 				</h:form>
 			</div> -->
 			<h1 style="text-align: center">Pizza Store</h1>
@@ -56,9 +56,8 @@
 												<td>#{order.totalPrice} $</td>
 												<td>
 													<h:form>
-														<!-- onclick="updateOrders(#{order.orderId})" -->
-														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}"  value="Confirm" styleClass="btn btn-primary"/>
-														<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}" value="Cancel" styleClass="btn btn-danger"/>
+														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}" oncomplete="updateOrders(#{order.orderId})" value="Confirm" styleClass="btn btn-primary"/>
+														<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}" oncomplete="updateOrders(#{order.orderId})" value="Cancel" styleClass="btn btn-danger"/>
 													</h:form>
 												</td>
 											</tr>

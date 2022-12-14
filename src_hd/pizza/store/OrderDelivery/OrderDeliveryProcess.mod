@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Dec 13 15:58:40 ICT 2022]
+[>Created: Wed Dec 14 11:41:04 ICT 2022]
 184F07E0F8EE34DB 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderDeliveryProcess Big #zClass
@@ -83,7 +83,8 @@ Os0 f6 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodE
 ' #txt
 Os0 f6 inActionCode 'import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId, StatusOrder.PAIED);' #txt
+OrderService.changeStatusOrder(param.orderId, StatusOrder.PAIED);
+out.dataOrdered = OrderService.getOrders();' #txt
 Os0 f6 outParameterDecl '<> result;
 ' #txt
 Os0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

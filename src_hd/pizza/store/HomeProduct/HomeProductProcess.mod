@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Dec 12 23:28:48 ICT 2022]
+[>Created: Wed Dec 14 09:58:11 ICT 2022]
 184E19F71E2C7142 3.18 #module
 >Proto >Proto Collection #zClass
 Hs0 HomeProductProcess Big #zClass
@@ -191,6 +191,8 @@ Hs0 f8 actionDecl 'pizza.store.HomeProduct.HomeProductData out;
 ' #txt
 Hs0 f8 actionTable 'out=in;
 ' #txt
+Hs0 f8 actionCode 'import pizaa.store.security.SecurityUtils;
+SecurityUtils.logout();' #txt
 Hs0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -215,7 +217,6 @@ Hs0 f11 responseActionDecl 'pizza.store.HomeProduct.HomeProductData out;
 ' #txt
 Hs0 f11 responseMappingAction 'out=in;
 ' #txt
-Hs0 f11 responseActionCode ivy.session.logoutSessionUser(); #txt
 Hs0 f11 windowConfiguration '* ' #txt
 Hs0 f11 isAsynch false #txt
 Hs0 f11 isInnerRd true #txt

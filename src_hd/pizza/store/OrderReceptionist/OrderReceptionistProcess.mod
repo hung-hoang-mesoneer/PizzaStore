@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Dec 13 15:15:59 ICT 2022]
+[>Created: Wed Dec 14 14:17:52 ICT 2022]
 184EB7F7E508BB7B 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderReceptionistProcess Big #zClass
@@ -26,6 +26,11 @@ Os0 @RichDialogProcessEnd f7 '' #zField
 Os0 @RichDialogMethodStart f9 '' #zField
 Os0 @RichDialogProcessEnd f10 '' #zField
 Os0 @PushWFArc f11 '' #zField
+Os0 @RichDialogProcessStart f12 '' #zField
+Os0 @RichDialog f15 '' #zField
+Os0 @PushWFArc f16 '' #zField
+Os0 @RichDialogProcessEnd f13 '' #zField
+Os0 @PushWFArc f14 '' #zField
 Os0 @PushWFArc f8 '' #zField
 >Proto Os0 Os0 OrderReceptionistProcess #zField
 Os0 f0 guid 184EB7F7E64C943B #txt
@@ -86,7 +91,9 @@ Os0 f6 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodE
 ' #txt
 Os0 f6 inActionCode 'import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId,StatusOrder.CONFIRMED);' #txt
+OrderService.changeStatusOrder(param.orderId,StatusOrder.CONFIRMED);
+out.dataOrdered = OrderService.getOrders();
+' #txt
 Os0 f6 outParameterDecl '<> result;
 ' #txt
 Os0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -112,7 +119,8 @@ Os0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodE
 ' #txt
 Os0 f9 inActionCode 'import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId, StatusOrder.CANCELED);' #txt
+OrderService.changeStatusOrder(param.orderId, StatusOrder.CANCELED);
+out.dataOrdered = OrderService.getOrders();' #txt
 Os0 f9 outParameterDecl '<> result;
 ' #txt
 Os0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -131,6 +139,48 @@ Os0 f10 211 307 26 26 0 12 #rect
 Os0 f10 @|RichDialogProcessEndIcon #fIcon
 Os0 f11 expr out #txt
 Os0 f11 109 320 211 320 #arcP
+Os0 f12 guid 1850EAD67B673D6B #txt
+Os0 f12 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
+Os0 f12 actionDecl 'pizza.store.OrderReceptionist.OrderReceptionistData out;
+' #txt
+Os0 f12 actionTable 'out=in;
+' #txt
+Os0 f12 actionCode 'import pizaa.store.security.SecurityUtils;
+SecurityUtils.logout();' #txt
+Os0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>logout1</name>
+        <nameStyle>7,5,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Os0 f12 83 435 26 26 -20 15 #rect
+Os0 f12 @|RichDialogProcessStartIcon #fIcon
+Os0 f15 targetWindow NEW:card: #txt
+Os0 f15 targetDisplay TOP #txt
+Os0 f15 richDialogId pizza.store.Login #txt
+Os0 f15 startMethod start() #txt
+Os0 f15 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
+Os0 f15 requestActionDecl '<> param;' #txt
+Os0 f15 responseActionDecl 'pizza.store.OrderReceptionist.OrderReceptionistData out;
+' #txt
+Os0 f15 responseMappingAction 'out=in;
+' #txt
+Os0 f15 windowConfiguration '* ' #txt
+Os0 f15 isAsynch false #txt
+Os0 f15 isInnerRd true #txt
+Os0 f15 userContext '* ' #txt
+Os0 f15 168 426 112 44 0 -8 #rect
+Os0 f15 @|RichDialogIcon #fIcon
+Os0 f16 expr out #txt
+Os0 f16 109 448 168 448 #arcP
+Os0 f13 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
+Os0 f13 355 435 26 26 0 12 #rect
+Os0 f13 @|RichDialogProcessEndIcon #fIcon
+Os0 f14 expr out #txt
+Os0 f14 280 448 355 448 #arcP
 Os0 f8 expr out #txt
 Os0 f8 109 240 219 240 #arcP
 >Proto Os0 .type pizza.store.OrderReceptionist.OrderReceptionistData #txt
@@ -143,5 +193,9 @@ Os0 f3 mainOut f5 tail #connect
 Os0 f5 head f4 mainIn #connect
 Os0 f9 mainOut f11 tail #connect
 Os0 f11 head f10 mainIn #connect
+Os0 f12 mainOut f16 tail #connect
+Os0 f16 head f15 mainIn #connect
+Os0 f15 mainOut f14 tail #connect
+Os0 f14 head f13 mainIn #connect
 Os0 f6 mainOut f8 tail #connect
 Os0 f8 head f7 mainIn #connect

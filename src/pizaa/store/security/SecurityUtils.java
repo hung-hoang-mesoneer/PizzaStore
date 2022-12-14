@@ -27,4 +27,10 @@ public class SecurityUtils {
 		}
 		return currentRole;
 	}
+
+	public static void logout() {
+		ISecurityManager securityManager = ch.ivyteam.ivy.security.internal.SecurityManager.getSecurityManager();
+		ISession currentSession = securityManager.getCurrentSession();
+		currentSession.logoutSessionUser();
+	}
 }
