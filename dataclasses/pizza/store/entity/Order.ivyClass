@@ -1,0 +1,28 @@
+Order #class
+true #isEntity
+pizza.store.entity #namespace
+ORDER #dbTableName
+orderId Integer #field
+orderId Identifier #fieldComment
+orderId order_id #dbFieldName
+orderId PERSISTENT #fieldModifier
+orderId ID #fieldModifier
+orderId GENERATED #fieldModifier
+name String #field
+name name #dbFieldName
+name PERSISTENT #fieldModifier
+phone String #field
+phone phone #dbFieldName
+phone PERSISTENT #fieldModifier
+deliveryTo String #field
+deliveryTo delivery_to #dbFieldName
+deliveryTo PERSISTENT #fieldModifier
+status String #field
+status status #dbFieldName
+status PERSISTENT #fieldModifier
+date String #field
+date create_date #dbFieldName
+date PERSISTENT #fieldModifier
+totalPrice Integer #field
+totalPrice total_price #dbFieldName
+totalPrice PERSISTENT #fieldModifier

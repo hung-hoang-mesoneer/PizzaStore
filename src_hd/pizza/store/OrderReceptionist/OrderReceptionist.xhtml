@@ -5,30 +5,32 @@
 	xmlns:ic="http://ivyteam.ch/jsf/component"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions"
-	xmlns:pm="http://primefaces.org/mobile">
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">Order</ui:define>
 		<ui:define name="content">
-	<!-- 	<div style="float: right; margin-right: 50px">
-				<h:form id="form">
-					<p:commandButton actionListener="#{logic.logout1}" value="Logout" />
-				</h:form>
-			</div> -->
 			<h1 style="text-align: center">Pizza Store</h1>
-			<h2 style="text-align: center">Pending orders</h2>
+			<h2 style="text-align: center">Pending orders</h2> <br/><br/>
 			<div class="container">
 				<div class="row">
-					<form class="form-horizontal">
+					<h:form id="form" class="form-horizontal">
+						<div class="form-group" style="margin-left: 50px;">
+							<p:inputText value="#{data.nameSearch}" placeholder="Search.." style="width:400px"/>
+							<p:commandButton actionListener="#{logic.search()}" update="form"  value="Search"
+								styleClass="btn btn-secondary">
+							</p:commandButton>
+						</div>
 						<div class="form-group">
-							<div class="main">
-								<div class="form-group has-feedback has-search">
-									<span class="glyphicon glyphicon-search form-control-feedback"></span>
-									<input type="text" class="form-control" placeholder="Search" />
-								</div>
-							</div>
 							<div class="col-sm-10" style="margin: 50px">
-								<table class="table">
+								<c:if test="#{data.dataOrdered.size() == 0}">
+									<div class="col-sm-10" id="no-data-order"
+										style="margin-left: 250px; font-size: 20px; color: red;">No
+										Data</div>
+								</c:if>
+								<c:if test="#{data.dataOrdered.size() != 0}">
+									<table class="table">
 									<thead class="thead-light">
 										<tr>
 											<th scope="col">Order No</th>
@@ -40,6 +42,7 @@
 											<th scope="col">Action</th>
 										</tr>
 									</thead>
+									
 									<tbody id = "data-table">
 										<ui:repeat value="#{data.dataOrdered}" var="order">
 											<tr id = "order#{order.orderId}">
@@ -55,18 +58,17 @@
 												<td>#{order.phone}</td>
 												<td>#{order.totalPrice} $</td>
 												<td>
-													<h:form>
-														<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}" oncomplete="updateOrders(#{order.orderId})" value="Confirm" styleClass="btn btn-primary"/>
-														<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}" oncomplete="updateOrders(#{order.orderId})" value="Cancel" styleClass="btn btn-danger"/>
-													</h:form>
+													<p:commandButton actionListener="#{logic.confirmOrder(order.orderId, order.status)}" update="form" value="Confirm" styleClass="btn btn-primary"/>
+													<p:commandButton actionListener="#{logic.cancelOrder(order.orderId, order.status)}"  update="form" value="Cancel" styleClass="btn btn-danger"/> <!-- oncomplete="updateOrders(#{order.orderId})" -->
 												</td>
 											</tr>
 										</ui:repeat>
 									</tbody>
 								</table>
+								</c:if>
 							</div>
 						</div>
-					</form>
+					</h:form>
 				</div>
 			</div>
 			<script type="text/javascript">

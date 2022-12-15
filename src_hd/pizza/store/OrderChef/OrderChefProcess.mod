@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Dec 15 14:21:54 ICT 2022]
+[>Created: Thu Dec 15 16:39:49 ICT 2022]
 184F07D83728581A 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderChefProcess Big #zClass
@@ -24,6 +24,9 @@ Os0 @PushWFArc f5 '' #zField
 Os0 @RichDialogMethodStart f6 '' #zField
 Os0 @RichDialogProcessEnd f7 '' #zField
 Os0 @PushWFArc f8 '' #zField
+Os0 @RichDialogMethodStart f9 '' #zField
+Os0 @RichDialogProcessEnd f10 '' #zField
+Os0 @PushWFArc f11 '' #zField
 >Proto Os0 Os0 OrderChefProcess #zField
 Os0 f0 guid 184F07D8388896F5 #txt
 Os0 f0 type pizza.store.OrderChef.OrderChefData #txt
@@ -111,6 +114,33 @@ Os0 f7 307 243 26 26 0 12 #rect
 Os0 f7 @|RichDialogProcessEndIcon #fIcon
 Os0 f8 expr out #txt
 Os0 f8 109 256 307 256 #arcP
+Os0 f9 guid 18515267BA4EB3D5 #txt
+Os0 f9 type pizza.store.OrderChef.OrderChefData #txt
+Os0 f9 method search() #txt
+Os0 f9 disableUIEvents false #txt
+Os0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
+<> param = methodEvent.getInputArguments();
+' #txt
+Os0 f9 inActionCode 'import pizza.store.restClient.OrderClient;
+out.dataOrdered = OrderClient.getOrders(out.nameSearch,pizza.store.StatusOrder.CONFIRMED);' #txt
+Os0 f9 outParameterDecl '<> result;
+' #txt
+Os0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>search()</name>
+        <nameStyle>8,5,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Os0 f9 83 323 26 26 -23 15 #rect
+Os0 f9 @|RichDialogMethodStartIcon #fIcon
+Os0 f10 type pizza.store.OrderChef.OrderChefData #txt
+Os0 f10 275 323 26 26 0 12 #rect
+Os0 f10 @|RichDialogProcessEndIcon #fIcon
+Os0 f11 expr out #txt
+Os0 f11 109 336 275 336 #arcP
 >Proto Os0 .type pizza.store.OrderChef.OrderChefData #txt
 >Proto Os0 .processKind HTML_DIALOG #txt
 >Proto Os0 -8 -8 16 16 16 26 #rect
@@ -121,3 +151,5 @@ Os0 f3 mainOut f5 tail #connect
 Os0 f5 head f4 mainIn #connect
 Os0 f6 mainOut f8 tail #connect
 Os0 f8 head f7 mainIn #connect
+Os0 f9 mainOut f11 tail #connect
+Os0 f11 head f10 mainIn #connect

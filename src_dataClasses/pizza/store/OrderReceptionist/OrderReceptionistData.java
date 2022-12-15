@@ -7,7 +7,7 @@ package pizza.store.OrderReceptionist;
 public class OrderReceptionistData extends ch.ivyteam.ivy.scripting.objects.CompositeObject
 {
   /** SerialVersionUID */
-  private static final long serialVersionUID = 2700097837244583267L;
+  private static final long serialVersionUID = 7361617106149303642L;
 
   private java.util.List<pizza.store.dto.OrderDTO> dataOrdered;
 
@@ -27,6 +27,26 @@ public class OrderReceptionistData extends ch.ivyteam.ivy.scripting.objects.Comp
   public void setDataOrdered(java.util.List<pizza.store.dto.OrderDTO> _dataOrdered)
   {
     dataOrdered = _dataOrdered;
+  }
+
+  private java.lang.String nameSearch;
+
+  /**
+   * Gets the field nameSearch.
+   * @return the value of the field nameSearch; may be null.
+   */
+  public java.lang.String getNameSearch()
+  {
+    return nameSearch;
+  }
+
+  /**
+   * Sets the field nameSearch.
+   * @param _nameSearch the new value of the field nameSearch.
+   */
+  public void setNameSearch(java.lang.String _nameSearch)
+  {
+    nameSearch = _nameSearch;
   }
 
 }

@@ -1,0 +1,18 @@
+Product #class
+true #isEntity
+pizza.store.entity #namespace
+id Integer #field
+id Identifier #fieldComment
+id id #dbFieldName
+id PERSISTENT #fieldModifier
+id ID #fieldModifier
+id GENERATED #fieldModifier
+name String #field
+name name #dbFieldName
+name PERSISTENT #fieldModifier
+price Integer #field
+price price #dbFieldName
+price PERSISTENT #fieldModifier
+quantity Integer #field
+quantity quantity #dbFieldName
+quantity PERSISTENT #fieldModifier

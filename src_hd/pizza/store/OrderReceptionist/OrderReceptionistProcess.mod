@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Dec 15 14:19:59 ICT 2022]
+[>Created: Thu Dec 15 16:30:53 ICT 2022]
 184EB7F7E508BB7B 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderReceptionistProcess Big #zClass
@@ -32,6 +32,9 @@ Os0 @PushWFArc f16 '' #zField
 Os0 @RichDialogProcessEnd f13 '' #zField
 Os0 @PushWFArc f14 '' #zField
 Os0 @PushWFArc f8 '' #zField
+Os0 @RichDialogMethodStart f17 '' #zField
+Os0 @RichDialogProcessEnd f18 '' #zField
+Os0 @PushWFArc f19 '' #zField
 >Proto Os0 Os0 OrderReceptionistProcess #zField
 Os0 f0 guid 184EB7F7E64C943B #txt
 Os0 f0 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
@@ -197,6 +200,33 @@ Os0 f14 expr out #txt
 Os0 f14 280 448 355 448 #arcP
 Os0 f8 expr out #txt
 Os0 f8 109 240 219 240 #arcP
+Os0 f17 guid 1851515518572790 #txt
+Os0 f17 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
+Os0 f17 method search() #txt
+Os0 f17 disableUIEvents false #txt
+Os0 f17 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
+<> param = methodEvent.getInputArguments();
+' #txt
+Os0 f17 inActionCode 'import pizza.store.restClient.OrderClient;
+out.dataOrdered = OrderClient.getOrders(out.nameSearch,pizza.store.StatusOrder.PENDING);' #txt
+Os0 f17 outParameterDecl '<> result;
+' #txt
+Os0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>search</name>
+        <nameStyle>6,5,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Os0 f17 83 371 26 26 -19 15 #rect
+Os0 f17 @|RichDialogMethodStartIcon #fIcon
+Os0 f18 type pizza.store.OrderReceptionist.OrderReceptionistData #txt
+Os0 f18 211 371 26 26 0 12 #rect
+Os0 f18 @|RichDialogProcessEndIcon #fIcon
+Os0 f19 expr out #txt
+Os0 f19 109 384 211 384 #arcP
 >Proto Os0 .type pizza.store.OrderReceptionist.OrderReceptionistData #txt
 >Proto Os0 .processKind HTML_DIALOG #txt
 >Proto Os0 -8 -8 16 16 16 26 #rect
@@ -213,3 +243,5 @@ Os0 f15 mainOut f14 tail #connect
 Os0 f14 head f13 mainIn #connect
 Os0 f6 mainOut f8 tail #connect
 Os0 f8 head f7 mainIn #connect
+Os0 f17 mainOut f19 tail #connect
+Os0 f19 head f18 mainIn #connect
