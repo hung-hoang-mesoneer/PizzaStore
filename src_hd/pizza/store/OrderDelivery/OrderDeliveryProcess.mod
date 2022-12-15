@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Dec 14 11:41:04 ICT 2022]
+[>Created: Thu Dec 15 14:21:05 ICT 2022]
 184F07E0F8EE34DB 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderDeliveryProcess Big #zClass
@@ -32,9 +32,13 @@ Os0 f0 disableUIEvents true #txt
 Os0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f0 inActionCode 'import pizza.store.service.OrderService;
+Os0 f0 inActionCode 'import pizza.store.StatusOrder;
+import org.apache.commons.lang.StringUtils;
+import pizza.store.restClient.OrderClient;
+import pizza.store.service.OrderService;
 
-out.dataOrdered = OrderService.getOrders();' #txt
+// out.dataOrdered = OrderService.getOrders();
+out.dataOrdered = OrderClient.getOrders(StringUtils.EMPTY, StatusOrder.COOKED);' #txt
 Os0 f0 outParameterDecl '<> result;
 ' #txt
 Os0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -81,10 +85,16 @@ Os0 f6 disableUIEvents false #txt
 Os0 f6 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <java.lang.Integer orderId,pizza.store.StatusOrder statusOrder> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f6 inActionCode 'import pizza.store.StatusOrder;
+Os0 f6 inActionCode 'import org.apache.commons.lang.StringUtils;
+import pizza.store.restClient.OrderClient;
+import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId, StatusOrder.PAIED);
-out.dataOrdered = OrderService.getOrders();' #txt
+//OrderService.changeStatusOrder(param.orderId, StatusOrder.PAIED);
+//out.dataOrdered = OrderService.getOrders();
+
+OrderClient.updateStatusOrder(param.orderId,StatusOrder.PAIED);
+out.dataOrdered = OrderClient.getOrders(StringUtils.EMPTY, StatusOrder.COOKED);
+' #txt
 Os0 f6 outParameterDecl '<> result;
 ' #txt
 Os0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

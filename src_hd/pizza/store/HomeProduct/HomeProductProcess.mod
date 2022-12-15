@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Dec 15 10:28:25 ICT 2022]
+[>Created: Thu Dec 15 11:17:37 ICT 2022]
 184E19F71E2C7142 3.18 #module
 >Proto >Proto Collection #zClass
 Hs0 HomeProductProcess Big #zClass
@@ -145,10 +145,12 @@ Hs0 f16 actionDecl 'pizza.store.HomeProduct.HomeProductData out;
 ' #txt
 Hs0 f16 actionTable 'out=in;
 ' #txt
-Hs0 f16 actionCode 'import pizza.store.service.OrderService;
+Hs0 f16 actionCode 'import pizza.store.restClient.OrderClient;
+import pizza.store.service.OrderService;
 import pizza.store.service.ProductService;
 in.order.setProductIds(in.productOrders);
-OrderService.createOrder(in.order);
+//OrderService.createOrder(in.order);
+OrderClient.createOrder(in.order);
 in.productOrders.clear();' #txt
 Hs0 f16 type pizza.store.HomeProduct.HomeProductData #txt
 Hs0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

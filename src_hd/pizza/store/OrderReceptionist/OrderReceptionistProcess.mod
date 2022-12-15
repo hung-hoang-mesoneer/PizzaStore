@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Dec 14 14:17:52 ICT 2022]
+[>Created: Thu Dec 15 14:19:59 ICT 2022]
 184EB7F7E508BB7B 3.18 #module
 >Proto >Proto Collection #zClass
 Os0 OrderReceptionistProcess Big #zClass
@@ -40,9 +40,13 @@ Os0 f0 disableUIEvents true #txt
 Os0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <pizza.store.Data data> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f0 inActionCode 'import pizza.store.service.OrderService;
+Os0 f0 inActionCode 'import pizza.store.StatusOrder;
+import org.apache.commons.lang.StringUtils;
+import pizza.store.restClient.OrderClient;
+import pizza.store.service.OrderService;
 import pizza.store.service.ProductService;
-out.dataOrdered = OrderService.getOrders();' #txt
+//out.dataOrdered = OrderService.getOrders();
+out.dataOrdered = OrderClient.getOrders(StringUtils.EMPTY, StatusOrder.PENDING);' #txt
 Os0 f0 outParameterDecl '<pizza.store.Data data> result;
 ' #txt
 Os0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -89,10 +93,14 @@ Os0 f6 disableUIEvents false #txt
 Os0 f6 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <java.lang.Integer orderId,pizza.store.StatusOrder statusOrder> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f6 inActionCode 'import pizza.store.StatusOrder;
+Os0 f6 inActionCode 'import org.apache.commons.lang.StringUtils;
+import pizza.store.restClient.OrderClient;
+import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId,StatusOrder.CONFIRMED);
-out.dataOrdered = OrderService.getOrders();
+//OrderService.changeStatusOrder(param.orderId,StatusOrder.CONFIRMED);
+//out.dataOrdered = OrderService.getOrders();
+OrderClient.updateStatusOrder(param.orderId,StatusOrder.CONFIRMED);
+out.dataOrdered = OrderClient.getOrders(StringUtils.EMPTY, StatusOrder.PENDING);
 ' #txt
 Os0 f6 outParameterDecl '<> result;
 ' #txt
@@ -117,10 +125,16 @@ Os0 f9 disableUIEvents false #txt
 Os0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <java.lang.Integer orderId,pizza.store.StatusOrder statusOrder> param = methodEvent.getInputArguments();
 ' #txt
-Os0 f9 inActionCode 'import pizza.store.StatusOrder;
+Os0 f9 inActionCode 'import org.apache.commons.lang.StringUtils;
+import pizza.store.restClient.OrderClient;
+import pizza.store.StatusOrder;
 import pizza.store.service.OrderService;
-OrderService.changeStatusOrder(param.orderId, StatusOrder.CANCELED);
-out.dataOrdered = OrderService.getOrders();' #txt
+//OrderService.changeStatusOrder(param.orderId, StatusOrder.CANCELED);
+//out.dataOrdered = OrderService.getOrders();
+
+OrderClient.updateStatusOrder(param.orderId,StatusOrder.CANCELED);
+out.dataOrdered = OrderClient.getOrders(StringUtils.EMPTY, StatusOrder.PENDING);
+' #txt
 Os0 f9 outParameterDecl '<> result;
 ' #txt
 Os0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
