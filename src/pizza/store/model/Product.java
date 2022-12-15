@@ -14,6 +14,10 @@ public class Product {
 
 	private ProductType type;
 
+	public Product() {
+		super();
+	}
+
 	public Product(int id, String name, int price, String image,
 			ProductType type) {
 		super();

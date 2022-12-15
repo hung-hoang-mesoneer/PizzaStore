@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<restClients/>
+<restClients>
+    <restClient>
+        <uuid>003dc758-425d-44e6-82ca-1e801871d524</uuid>
+        <name>productService</name>
+        <configuration>
+            <uri>http://{ivy.engine.host}:{ivy.engine.http.port}/{ivy.engine.context}/api/{ivy.request.application}/product</uri>
+            <property>
+                <name>username</name>
+                <value>staff</value>
+                <password>false</password>
+            </property>
+            <property>
+                <name>password</name>
+                <value>\u0087\u00AF\u0070\u0062\u0041\u00A9\u0032\u0033\u0036\u008B\u00DE\u005F\u0049\u005E\u000E\u003B\u0095\u00D2\u00E7\u00BC\u005F\u0052\u0088\u00E7\u00F9\u0012\u001D\u0037\u00A3\u00F0\u00E0\u0017</value>
+                <password>true</password>
+            </property>
+            <feature>
+                <class>ch.ivyteam.ivy.rest.client.mapper.JsonFeature</class>
+            </feature>
+            <feature>
+                <class>ch.ivyteam.ivy.rest.client.authentication.HttpBasicAuthenticationFeature</class>
+            </feature>
+        </configuration>
+    </restClient>
+</restClients>
