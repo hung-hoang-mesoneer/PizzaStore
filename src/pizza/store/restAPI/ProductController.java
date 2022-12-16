@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -12,6 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.process.data.persistence.IPersistenceContext;
 import pizza.store.ProductType;
 import pizza.store.model.Product;
 
@@ -66,4 +69,20 @@ public class ProductController {
 		}
 		return matches;
 	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getProductsDB() {
+		pizza.store.entity.Product product = new pizza.store.entity.Product();
+		product.setName("Iphone");
+		product.setPrice(10);
+		product.setQuantity(20);
+		
+		IPersistenceContext persistenceContext =  Ivy.persistence();
+		persistenceContext.get("demo").persist(product);
+		
+		return Response.status(Status.OK).entity(product)
+				.build();
+	}
+
 }

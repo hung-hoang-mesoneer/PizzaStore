@@ -5,7 +5,7 @@ package pizza.store.entity;
 @SuppressWarnings("all")
 @javax.annotation.Generated(comments="This is the java file of the ivy data class Order", value={"ch.ivyteam.ivy.scripting.streamInOut.IvyScriptJavaClassBuilder"})
 @javax.persistence.Entity
-@javax.persistence.Table(name="ORDER")
+@javax.persistence.Table(name="order")
 public class Order extends ch.ivyteam.ivy.scripting.objects.CompositeObject
 {
   /** SerialVersionUID */
@@ -16,7 +16,7 @@ public class Order extends ch.ivyteam.ivy.scripting.objects.CompositeObject
    */
   @javax.persistence.Id
   @javax.persistence.GeneratedValue
-  @javax.persistence.Column(name="order_id")
+  @javax.persistence.Column(name="id")
   private java.lang.Integer orderId;
 
   /**
@@ -121,7 +121,7 @@ public class Order extends ch.ivyteam.ivy.scripting.objects.CompositeObject
     status = _status;
   }
 
-  @javax.persistence.Column(name="create_date")
+  @javax.persistence.Column(name="created_date")
   private java.lang.String date;
 
   /**
@@ -142,7 +142,7 @@ public class Order extends ch.ivyteam.ivy.scripting.objects.CompositeObject
     date = _date;
   }
 
-  @javax.persistence.Column(name="total_price")
+  @javax.persistence.Column(name="totalPrice")
   private java.lang.Integer totalPrice;
 
   /**
